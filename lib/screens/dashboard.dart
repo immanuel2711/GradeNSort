@@ -6,7 +6,7 @@ class DashboardPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: const Color(0xFFF8F9F9), // Updated background color
       body: Column(
         children: [
           Container(
@@ -22,6 +22,7 @@ class DashboardPage extends StatelessWidget {
                     fontSize: 24,
                     color: Colors.black,
                     fontWeight: FontWeight.bold,
+                    fontFamily: 'Inter', // Added font style
                   ),
                 ),
                 const SizedBox(height: 20),
@@ -46,6 +47,7 @@ class DashboardPage extends StatelessWidget {
                       style: TextStyle(
                         fontSize: 16,
                         color: Colors.black,
+                        fontFamily: 'Inter', // Added font style
                       ),
                       textAlign: TextAlign.center,
                     ),
@@ -60,7 +62,10 @@ class DashboardPage extends StatelessWidget {
                   ),
                   child: const Text(
                     'Bluetooth status:',
-                    style: TextStyle(color: Colors.white),
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontFamily: 'Inter', // Added font style
+                    ),
                   ),
                 ),
               ],
@@ -78,7 +83,10 @@ class DashboardPage extends StatelessWidget {
             onPressed: () {},
             child: const Text(
               'Lot details',
-              style: TextStyle(color: Colors.white),
+              style: TextStyle(
+                color: Colors.white,
+                fontFamily: 'Inter', // Added font style
+              ),
             ),
           ),
           const SizedBox(height: 10), // Reduce this gap
@@ -90,55 +98,64 @@ class DashboardPage extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: const [
-                    Text('S.No', style: TextStyle(fontWeight: FontWeight.bold)),
-                    Text('Date', style: TextStyle(fontWeight: FontWeight.bold)),
-                    Text('Commodity', style: TextStyle(fontWeight: FontWeight.bold)),
-                    Text('Weight', style: TextStyle(fontWeight: FontWeight.bold)),
+                    Text('S.No', style: TextStyle(fontWeight: FontWeight.bold, fontFamily: 'Inter')),
+                    Text('Date', style: TextStyle(fontWeight: FontWeight.bold, fontFamily: 'Inter')),
+                    Text('Commodity', style: TextStyle(fontWeight: FontWeight.bold, fontFamily: 'Inter')),
+                    Text('Weight', style: TextStyle(fontWeight: FontWeight.bold, fontFamily: 'Inter')),
                   ],
                 ),
                 const SizedBox(height: 5),
                 const Divider(
                   thickness: 1,
-                  color: Color(0xFFA5A1A1),
+                  color: Color(0xFFF8F9F9),
                 ),
               ],
             ),
           ),
           Expanded(
-            child: ListView.builder(
+            child: ListView.separated(
               itemCount: 3, // Three rows of dummy data
               padding: EdgeInsets.zero, // Remove any default padding
+              separatorBuilder: (context, index) {
+                return const Divider(
+                  thickness: 1,
+                  color: Color(0xFFF8F9F9),
+                  indent: 16, // Same indent as the padding
+                  endIndent: 16, // Same endIndent as the padding
+                );
+              },
               itemBuilder: (context, index) {
-                return Column(
-                  children: [
-                    InkWell(
-                      onTap: () {
-                        // Handle row tap here
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          SnackBar(content: Text('Row $index clicked')),
-                        );
-                      },
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                        child: Row(
+                return InkWell(
+                  onTap: () {
+                    // Handle row tap here
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(content: Text('Row ${index + 1} clicked')),
+                    );
+                  },
+                  child: Container(
+                    color: const Color(0xFFF8F9F9), // Updated row background color
+                    padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+                    child: Column(
+                      children: [
+                        Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Text('${index + 1}'),
-                            const Text('2024-09-12'),
-                            Text('Commodity ${index + 1}'),
-                            Text('${(index + 1) * 10} kg'),
+                            Text('${index + 1}', style: TextStyle(fontFamily: 'Inter')),
+                            const Text('2024-09-12', style: TextStyle(fontFamily: 'Inter')),
+                            Text('Commodity ${index + 1}', style: TextStyle(fontFamily: 'Inter')),
+                            Text('${(index + 1) * 10} kg', style: TextStyle(fontFamily: 'Inter')),
                           ],
                         ),
-                      ),
+                        const SizedBox(height: 8), // Gap before the divider
+                        const Divider(
+                          thickness: 1,
+                          color: Color(0xFF6DBE45), // Divider color to match your design
+                          indent: 16, // Same indent as the padding
+                          endIndent: 16, // Same endIndent as the padding
+                        ),
+                      ],
                     ),
-                    const SizedBox(height: 10), // Increased gap between rows
-                    const Divider(
-                      thickness: 1,
-                      color: Color(0xFFA5A1A1),
-                      indent: 16, // Same indent as the padding
-                      endIndent: 16, // Same endIndent as the padding
-                    ),
-                  ],
+                  ),
                 );
               },
             ),
@@ -169,4 +186,3 @@ class DashboardPage extends StatelessWidget {
     );
   }
 }
-

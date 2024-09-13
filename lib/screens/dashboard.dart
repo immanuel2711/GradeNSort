@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'configuration.dart';
+
 class DashboardPage extends StatelessWidget {
   const DashboardPage({Key? key}) : super(key: key);
 
@@ -164,6 +166,14 @@ class DashboardPage extends StatelessWidget {
       ),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: 0,
+        onTap: (index) {
+          if (index == 1) {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const ConfigurationPage()),
+            );
+          }
+        },
         items: const [
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
@@ -186,3 +196,4 @@ class DashboardPage extends StatelessWidget {
     );
   }
 }
+

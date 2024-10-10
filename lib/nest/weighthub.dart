@@ -8,12 +8,12 @@ class WeighHub extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      //color: Colors.grey,
+      
 
       child: Column(children: [
         //********************************* */  
 
-        //First one on the road
+        // *** first one on the road ****
         Column(children: [
           Image.asset(
             'assets/icons/crate.png',
@@ -45,8 +45,8 @@ class WeighHub extends StatelessWidget {
                     decoration: InputDecoration(
                       border: OutlineInputBorder(
                         borderRadius:
-                            BorderRadius.circular(30.0), // Curved corners
-                        //borderSide: BorderSide.none, // Remove border line
+                            BorderRadius.circular(30.0), 
+                        
                       ),
                       contentPadding: EdgeInsets.only(bottom: 10),
                     ),
@@ -66,7 +66,7 @@ class WeighHub extends StatelessWidget {
 
               Column(children: [
                 Image.asset(
-                  'assets/icons/crate.png', //secong
+                  'assets/icons/crate.png', //secongd thingy
                   height: 50,
                 ),
                 Row(
@@ -95,8 +95,8 @@ class WeighHub extends StatelessWidget {
                           decoration: InputDecoration(
                             border: OutlineInputBorder(
                               borderRadius:
-                                  BorderRadius.circular(30.0), // Curved corners
-                              //borderSide: BorderSide.none, // Remove border line
+                                  BorderRadius.circular(30.0), 
+                              
                             ),
                             contentPadding: EdgeInsets.only(bottom: 10),
                           ),
@@ -109,10 +109,10 @@ class WeighHub extends StatelessWidget {
               // MAIN -SCale-SIUUUUUUUUUUUU !!****************
               Column(children: [
                 SvgPicture.asset(
-  'assets/icons/weight-scale.svg', // Path to your SVG asset
+  'assets/icons/weight-scale.svg', 
   width: 100,
-  height:90, // Specify width if needed
-   // Specify height if needed
+  height:90, 
+   
 ),
 SizedBox(height: 10,),
 
@@ -123,8 +123,8 @@ SizedBox(height: 10,),
                       decoration: InputDecoration(
                         border: OutlineInputBorder(
                           borderRadius:
-                              BorderRadius.circular(30.0), // Curved corners
-                          //borderSide: BorderSide.none, // Remove border line
+                              BorderRadius.circular(30.0), 
+                          
                         ),
                         contentPadding: EdgeInsets.only(bottom: 10),
                       ),
@@ -134,7 +134,7 @@ SizedBox(height: 10,),
 
               //******************************* */
 
-              // third one in the bloxck
+              // third one on the block
 
               Column(children: [
                 Image.asset(
@@ -167,8 +167,8 @@ SizedBox(height: 10,),
                           decoration: InputDecoration(
                             border: OutlineInputBorder(
                               borderRadius:
-                                  BorderRadius.circular(30.0), // Curved corners
-                              //borderSide: BorderSide.none, // Remove border line
+                                  BorderRadius.circular(30.0), 
+                              
                             ),
                             contentPadding: EdgeInsets.only(bottom: 10),
                           ),
@@ -213,8 +213,8 @@ SizedBox(height: 10,),
                     decoration: InputDecoration(
                       border: OutlineInputBorder(
                         borderRadius:
-                            BorderRadius.circular(30.0), // Curved corners
-                        //borderSide: BorderSide.none, // Remove border line
+                            BorderRadius.circular(30.0), 
+                        
                       ),
                       contentPadding: EdgeInsets.only(bottom: 10),
                     ),
@@ -233,10 +233,10 @@ SizedBox(height: 10,),
 
 
 
-// Scale box widget for middle icon
 
 
-// Grade Item Widget
+
+
 
 
 class GradeItem extends StatelessWidget {
@@ -253,14 +253,13 @@ class GradeItem extends StatelessWidget {
       child: Row(
         children: [
           Container(
-            width: 8.0, // Width of the indication bar
-            height: 60.0, // Height of the indication bar
-            color: Color(0xFFd9d9d9), // Color of the indication bar
+            width: 8.0, 
+            height: 60.0, 
+            color: Color(0xFFd9d9d9), 
           ),
-          SizedBox(width: 8.0), // Space between bar and the circular indicator
+          SizedBox(width: 8.0), 
           GestureDetector(
             onTap: () {
-              // Handle tap on the circular indicator
               print('Circular indicator tapped!');
             },
             child: Container(
@@ -272,7 +271,7 @@ class GradeItem extends StatelessWidget {
               ),
               child: Center(
                 child: Text(
-                  'G1', // Change this as needed
+                  'G1', 
                   style: TextStyle(
                     color: Colors.white,
                     fontWeight: FontWeight.bold,
@@ -281,7 +280,7 @@ class GradeItem extends StatelessWidget {
               ),
             ),
           ),
-          SizedBox(width: 8.0), // Space between circular indicator and text
+          SizedBox(width: 8.0), 
           Expanded(
             child: ListTile(
               title: Text(
@@ -316,16 +315,16 @@ class GradeItem extends StatelessWidget {
                       ],
                     ),
                   ),
-                  SizedBox(width: 8), // Space between quantity and icon
+                  SizedBox(width: 8), 
                   Icon(
                     Icons.arrow_right,
                     size: 32, // Icon size
-                    color: Color(0xFF242323), // Icon color
+                    color: Color(0xFF242323), 
                   ),
                 ],
               ),
               onTap: () {
-                // Handle tap action on ListTile
+                
                 print('ListTile tapped!');
               },
             ),

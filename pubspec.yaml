@@ -57,12 +57,7 @@ flutter:
   # included with your application, so that you can use the icons in
   # the material Icons class.
   uses-material-design: true
-  fonts:
-    - family: Poppins
-      fonts:
-        - asset: assets/fonts/Poppins-Regular.ttf
-        - asset: assets/fonts/Poppins-ExtraBlack.ttf
-          weight: 900
+
 
   # To add assets to your application, add an assets section, like this:
   # assets:
@@ -80,6 +75,12 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
+  fonts:
+    - family: Poppins
+      fonts:
+        - asset: assets/fonts/Poppins-Thin.ttf
+
+          weight: 900
   # fonts:
   #   - family: Schyler
   #     fonts:

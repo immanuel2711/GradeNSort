@@ -16,6 +16,8 @@ class _ConfigurationPageState extends State<ConfigurationPage> {
   bool _isButtonEnabled = false;
   List<Map<String, double>> _gradeWeights = [];
 
+  final TextStyle _blackTextStyle = const TextStyle(color: Colors.black);
+
   @override
   void initState() {
     super.initState();
@@ -70,7 +72,17 @@ class _ConfigurationPageState extends State<ConfigurationPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Configuration'),
+        title: const Text(
+          'Configuration',
+          style: TextStyle(
+            fontSize: 20,
+            color: Colors.black,
+            fontWeight: FontWeight.bold,
+
+
+          ),
+
+        ),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -91,8 +103,15 @@ class _ConfigurationPageState extends State<ConfigurationPage> {
                       controller: _commodityController,
                       decoration: InputDecoration(
                         hintText: 'Enter the new commodity name',
+                        hintStyle: TextStyle(
+                          color: Colors.black,
+                          fontSize: 14,
+                          fontWeight: FontWeight.normal,
+                          fontFamily: 'Poppins',
+                        ),
                         border: InputBorder.none,
                       ),
+                      style: _blackTextStyle,
                       onChanged: _updateLabel,
                     ),
                   ),
@@ -116,17 +135,17 @@ class _ConfigurationPageState extends State<ConfigurationPage> {
                 ),
               ],
             ),
-            const SizedBox(height: 16),
+            const SizedBox(height: 16), // Gap between the text field and category section
             // No of categories section
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                const Text(
+                Text(
                   'No of categories',
-                  style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
+                  style: _blackTextStyle.copyWith(
+                    fontSize: 15,
                     color: Colors.black,
+                    fontWeight: FontWeight.bold,
                   ),
                 ),
                 Row(
@@ -162,10 +181,9 @@ class _ConfigurationPageState extends State<ConfigurationPage> {
                       child: Center(
                         child: Text(
                           '$_numberOfCategories',
-                          style: const TextStyle(
+                          style: _blackTextStyle.copyWith(
                             fontSize: 18,
                             fontWeight: FontWeight.bold,
-                            color: Colors.black,
                           ),
                         ),
                       ),
@@ -191,20 +209,20 @@ class _ConfigurationPageState extends State<ConfigurationPage> {
                 ),
               ],
             ),
-            const SizedBox(height: 16),
+            const SizedBox(height: 16), // Gap after the category section
             // Dynamic weight entry
             if (_currentCategoryIndex < _numberOfCategories)
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    'Enter Grade ${_currentCategoryIndex + 1} weight',
-                    style: const TextStyle(
+                    'Enter Grade ${_currentCategoryIndex + 1} weight:',
+                    style: _blackTextStyle.copyWith(
                       fontSize: 16,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  const SizedBox(height: 8),
+                  const SizedBox(height: 8), // Gap before the weight input fields
                   Row(
                     children: [
                       Expanded(
@@ -212,6 +230,10 @@ class _ConfigurationPageState extends State<ConfigurationPage> {
                           controller: _fromKgController,
                           decoration: const InputDecoration(
                             labelText: 'From (kg)',
+                          ),
+                          style: TextStyle(
+                            fontSize: 10,
+                            color: Colors.black,
                           ),
                           keyboardType: TextInputType.number,
                           onChanged: (value) {
@@ -221,12 +243,16 @@ class _ConfigurationPageState extends State<ConfigurationPage> {
                           },
                         ),
                       ),
-                      const SizedBox(width: 16),
+                      const SizedBox(width: 16), // Gap between the from and to input fields
                       Expanded(
                         child: TextField(
                           controller: _toKgController,
                           decoration: const InputDecoration(
                             labelText: 'To (kg)',
+                          ),
+                          style: TextStyle(
+                            fontSize: 10,
+                            color: Colors.black,
                           ),
                           keyboardType: TextInputType.number,
                           onChanged: (value) {
@@ -236,7 +262,7 @@ class _ConfigurationPageState extends State<ConfigurationPage> {
                           },
                         ),
                       ),
-                      const SizedBox(width: 8),
+                      const SizedBox(width: 8), // Gap before the check button
                       Container(
                         decoration: BoxDecoration(
                           shape: BoxShape.circle,
@@ -252,27 +278,46 @@ class _ConfigurationPageState extends State<ConfigurationPage> {
                   ),
                 ],
               ),
-            const SizedBox(height: 16),
+            const SizedBox(height: 16), // Gap after the weight entry section
             Expanded(
-              child: ListView(
-                children: _gradeWeights.asMap().entries.map((entry) {
-                  int index = entry.key;
-                  Map<String, double> grade = entry.value;
-                  return Card(
-                    color: Colors.lightGreen[100],
-                    child: ListTile(
-                      leading: CircleAvatar(
-                        child: Text('${index + 1}'),
-                      ),
-                      title: Text('Grade ${index + 1}'),
-                      subtitle: Text(
-                        '${grade['fromKg']} kg - ${grade['toKg']} kg',
-                      ),
-                    ),
-                  );
-                }).toList(),
+              child: Container(
+                decoration: BoxDecoration(
+                  color: Colors.white, // Set the background color you want
+                  borderRadius: BorderRadius.circular(12), // Adjust the radius as needed
+                ),
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(12), // Ensure the children are clipped to the rounded edges
+                  child: ListView(
+                    children: _gradeWeights.asMap().entries.map((entry) {
+                      int index = entry.key;
+                      Map<String, double> grade = entry.value;
+                      return Card(
+                        color: const Color(0xFF6DBE45),
+                        child: ListTile(
+                          leading: CircleAvatar(
+                            backgroundColor: Colors.black,
+                            child: Text(
+                              '${index + 1}',
+                              style: const TextStyle(color: Colors.white),
+                            ),
+                          ),
+                          title: Text('Grade ${index + 1}', style: _blackTextStyle),
+                          subtitle: Text(
+                            '${grade['fromKg']} kg - ${grade['toKg']} kg',
+                            style: const TextStyle(
+                              fontSize: 15,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.black,
+                            ),
+                          ),
+                        ),
+                      );
+                    }).toList(),
+                  ),
+                ),
               ),
             ),
+
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -280,13 +325,25 @@ class _ConfigurationPageState extends State<ConfigurationPage> {
                   onPressed: () {
                     // Cancel logic
                   },
-                  child: const Text('Cancel'),
+                  child: const Text(
+                    'Cancel',
+                    style: TextStyle(
+                      color: Color(0xFF181C14),
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
                 ),
-                ElevatedButton(
+                TextButton(
                   onPressed: () {
-                    // Save logic
+                    // Save all categories logic
                   },
-                  child: const Text('Save'),
+                  child: const Text(
+                    'Save All',
+                    style: TextStyle(
+                      color: Color(0xFF181C14),
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
                 ),
               ],
             ),

@@ -279,36 +279,67 @@ class _ConfigurationPageState extends State<ConfigurationPage> {
                 ],
               ),
             const SizedBox(height: 16), // Gap after the weight entry section
-            Expanded(
-              child: Container(
-                decoration: BoxDecoration(
-                  color: Colors.white, // Set the background color you want
-                  borderRadius: BorderRadius.circular(12), // Adjust the radius as needed
-                ),
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(12), // Ensure the children are clipped to the rounded edges
+            Container(
+              decoration: BoxDecoration(
+                color: Colors.transparent, // Make the background transparent
+              ),
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(12), // Ensure the children are clipped to the rounded edges
+                child: Container(
+                  decoration: BoxDecoration(
+                    color: Color(0XFFDDF2A0), // Background color for the cards
+                    borderRadius: BorderRadius.circular(12), // Rounded corners for the card background
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.grey.withOpacity(0.2), // Soft shadow for depth
+                        spreadRadius: 2,
+                        blurRadius: 5,
+                        offset: Offset(0, 3), // Changes position of shadow
+                      ),
+                    ],
+                  ),
                   child: ListView(
+                    padding: EdgeInsets.all(16), // Add padding around the ListView
+                    shrinkWrap: true, // Allow ListView to size itself based on content
+                    physics: NeverScrollableScrollPhysics(), // Disable scrolling of the ListView
                     children: _gradeWeights.asMap().entries.map((entry) {
                       int index = entry.key;
                       Map<String, double> grade = entry.value;
                       return Card(
                         color: const Color(0xFF6DBE45),
+                        elevation: 2, // Add elevation for shadow effect on the card
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(12), // Rounded edges for the card
+                        ),
                         child: ListTile(
                           leading: CircleAvatar(
                             backgroundColor: Colors.black,
                             child: Text(
-                              '${index + 1}',
+                              '${index + 1}', // Displaying the grade number
                               style: const TextStyle(color: Colors.white),
                             ),
                           ),
-                          title: Text('Grade ${index + 1}', style: _blackTextStyle),
-                          subtitle: Text(
-                            '${grade['fromKg']} kg - ${grade['toKg']} kg',
-                            style: const TextStyle(
-                              fontSize: 15,
+                          title: Text(
+                            'Grade ${index + 1}',
+                            style: TextStyle(
+                              fontSize: 16,
                               fontWeight: FontWeight.bold,
                               color: Colors.black,
                             ),
+                          ),
+                          subtitle: Text(
+                            '${grade['fromKg']} kg - ${grade['toKg']} kg',
+                            style: TextStyle(
+                              fontSize: 15,
+                              fontWeight: FontWeight.normal,
+                              color: Colors.black,
+                            ),
+                          ),
+                          trailing: IconButton(
+                            icon: Icon(Icons.edit), // Optional: Edit icon
+                            onPressed: () {
+                              // Add edit functionality here
+                            },
                           ),
                         ),
                       );
@@ -317,6 +348,7 @@ class _ConfigurationPageState extends State<ConfigurationPage> {
                 ),
               ),
             ),
+
 
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,

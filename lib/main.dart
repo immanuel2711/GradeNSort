@@ -13,8 +13,15 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
+        fontFamily: 'Poppins', // This sets Poppins as the default font
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple), // Moved outside of textTheme
+        useMaterial3: true, // Moved outside of textTheme
+        textTheme: const TextTheme(
+          bodyLarge: TextStyle(
+            fontWeight: FontWeight.w800, // Extra bold text
+            color: Colors.black, // Extra black text color
+          ),
+        ),
       ),
       home: const DashboardPage(), // Set DashboardPage as the home widget
     );

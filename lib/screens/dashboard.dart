@@ -55,21 +55,7 @@ class DashboardPage extends StatelessWidget {
                     ),
                   ),
                 ),
-                const SizedBox(height: 10),
-                Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-                  decoration: BoxDecoration(
-                    color: Colors.orange,
-                    borderRadius: BorderRadius.circular(12),
-                  ),
-                  child: const Text(
-                    'Bluetooth status:',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontFamily: 'Inter', // Added font style
-                    ),
-                  ),
-                ),
+
               ],
             ),
           ),

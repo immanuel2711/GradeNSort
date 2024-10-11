@@ -24,7 +24,7 @@ class DashboardPage extends StatelessWidget {
                     fontSize: 24,
                     color: Colors.black,
                     fontWeight: FontWeight.bold,
-                    fontFamily: 'Inter', // Added font style
+                    fontFamily: 'Poppins', // Added font style
                   ),
                 ),
                 const SizedBox(height: 20),
@@ -49,7 +49,7 @@ class DashboardPage extends StatelessWidget {
                       style: TextStyle(
                         fontSize: 16,
                         color: Colors.black,
-                        fontFamily: 'Inter', // Added font style
+                        fontFamily: 'Poppins', // Added font style
                       ),
                       textAlign: TextAlign.center,
                     ),
@@ -72,8 +72,9 @@ class DashboardPage extends StatelessWidget {
             child: const Text(
               'Lot details',
               style: TextStyle(
-                color: Colors.white,
-                fontFamily: 'Inter', // Added font style
+                color: Colors.black,
+                fontWeight: FontWeight.bold,
+                fontFamily: 'Poppins', // Added font style
               ),
             ),
           ),
@@ -86,10 +87,10 @@ class DashboardPage extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: const [
-                    Text('S.No', style: TextStyle(fontWeight: FontWeight.bold, fontFamily: 'Inter')),
-                    Text('Date', style: TextStyle(fontWeight: FontWeight.bold, fontFamily: 'Inter')),
-                    Text('Commodity', style: TextStyle(fontWeight: FontWeight.bold, fontFamily: 'Inter')),
-                    Text('Weight', style: TextStyle(fontWeight: FontWeight.bold, fontFamily: 'Inter')),
+                    Text('S.No', style: TextStyle(fontWeight: FontWeight.bold, fontFamily: 'Poppins')),
+                    Text('Date', style: TextStyle(fontWeight: FontWeight.bold, fontFamily: 'Poppins')),
+                    Text('Commodity', style: TextStyle(fontWeight: FontWeight.bold, fontFamily: 'Poppins')),
+                    Text('Weight', style: TextStyle(fontWeight: FontWeight.bold, fontFamily: 'Poppins')),
                   ],
                 ),
                 const SizedBox(height: 5),
@@ -128,10 +129,10 @@ class DashboardPage extends StatelessWidget {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Text('${index + 1}', style: TextStyle(fontFamily: 'Inter')),
-                            const Text('2024-09-12', style: TextStyle(fontFamily: 'Inter')),
-                            Text('Commodity ${index + 1}', style: TextStyle(fontFamily: 'Inter')),
-                            Text('${(index + 1) * 10} kg', style: TextStyle(fontFamily: 'Inter')),
+                            Text('${index + 1}', style: TextStyle(fontFamily: 'Poppins',fontWeight: FontWeight.bold)),
+                            const Text('2024-09-12', style: TextStyle(fontFamily: 'Poppins',fontWeight: FontWeight.bold)),
+                            Text('Commodity ${index + 1}', style: TextStyle(fontFamily: 'Poppins',fontWeight: FontWeight.bold)),
+                            Text('${(index + 1) * 10} kg', style: TextStyle(fontFamily: 'Poppins',fontWeight: FontWeight.bold)),
                           ],
                         ),
                         const SizedBox(height: 8), // Gap before the divider
@@ -150,35 +151,7 @@ class DashboardPage extends StatelessWidget {
           ),
         ],
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: 0,
-        onTap: (index) {
-          if (index == 1) {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => ConfigurationPage()),
-            );
-          }
-        },
-        items: const [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: '',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.add_circle_outline),
-            label: '',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.receipt_long),
-            label: '',
-          ),
-        ],
-        selectedItemColor: Colors.black,
-        unselectedItemColor: Colors.black.withOpacity(0.6),
-        showSelectedLabels: false,
-        showUnselectedLabels: false,
-      ),
+
     );
   }
 }

@@ -5,7 +5,7 @@ class ConfigurationPage extends StatefulWidget {
 
   @override
   _ConfigurationPageState createState() => _ConfigurationPageState();
-
+}
 
 class _ConfigurationPageState extends State<ConfigurationPage> {
   int _numberOfCategories = 3;

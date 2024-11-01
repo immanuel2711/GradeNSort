@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
-// Import your configuration.dart file
+import 'package:firebase_core/firebase_core.dart'; // Import for Firebase
+import 'package:firebase_auth/firebase_auth.dart'; // Import for Firebase Auth
+import 'package:scale/pages/auth/signup.dart';
 import 'package:scale/pages/dashboard.dart';
 import 'package:scale/pages/configuration.dart';
 import 'package:scale/pages/addweight.dart';
-import 'package:scale/pages/Report.dart';
+import 'package:scale/pages/report.dart';
 
-
-void main() {
-  runApp(const MyApp());
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized(); // Ensure Flutter binding is initialized
+  await Firebase.initializeApp(); // Initialize Firebase
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -28,7 +31,30 @@ class MyApp extends StatelessWidget {
           ),
         ),
       ),
-      home: const MainPage(), // Set MainPage as the home widget
+      home: const AuthWrapper(), // Use AuthWrapper for authentication state
+    );
+  }
+}
+
+class AuthWrapper extends StatelessWidget {
+  const AuthWrapper({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return StreamBuilder<User?>(
+      stream: FirebaseAuth.instance.authStateChanges(),
+      builder: (context, snapshot) {
+        if (snapshot.connectionState == ConnectionState.active) {
+          // Check if user is signed in
+          final User? user = snapshot.data;
+          if (user != null) {
+            return const MainPage(); // Navigate to MainPage if logged in
+          } else {
+            return  SignUpPage(); // Navigate to SignUpPage if not logged in
+          }
+        }
+        return const Center(child: CircularProgressIndicator()); // Show loading indicator
+      },
     );
   }
 }
@@ -48,7 +74,8 @@ class _MainPageState extends State<MainPage> {
     const DashboardPage(),
     const AddWeight(),
     ReportPage(),
-    //const Placeholder(), // Placeholder for the third page, replace with your actual page
+    // Add ConfigurationPage if you wish to use it
+    // const ConfigurationPage(),
   ];
 
   // Method to handle tap on BottomNavigationBar items

@@ -38,6 +38,15 @@ dependencies:
 
   flutter_svg: ^1.1.6
   intl: ^0.18.1
+  firebase_core: ^3.6.0
+  firebase_auth: ^5.3.1
+  cloud_firestore: ^5.4.4
+  firebase_storage: ^12.3.4
+  image_picker: ^0.8.7
+  google_fonts: ^4.0.3
+  provider: ^6.1.2
+
+
 
 dev_dependencies:
   flutter_test:

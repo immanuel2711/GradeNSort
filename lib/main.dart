@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'GradeNSort',
       theme: ThemeData(
         fontFamily: 'Poppins', // Sets Poppins as the default font
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),

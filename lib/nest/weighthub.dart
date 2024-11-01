@@ -18,7 +18,7 @@ class WeighHub extends StatelessWidget {
           SizedBox(height: 20),
           Image.asset(
             'assets/icons/crate.png',
-            height: 40,
+            height: 30,
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -46,13 +46,13 @@ class WeighHub extends StatelessWidget {
                     decoration: InputDecoration(
                       border: OutlineInputBorder(
                         borderRadius:
-                            BorderRadius.circular(30.0),
+                        BorderRadius.circular(30.0),
 
                       ),
                       contentPadding: EdgeInsets.only(bottom: 10),
                     ),
                   )),
-                  SizedBox(width:35),
+              SizedBox(width:35),
             ],
           ),
         ]),
@@ -65,62 +65,62 @@ class WeighHub extends StatelessWidget {
 
               // Second poppin
 
-          Column(
-          children: [
-          Padding(
-          padding: const EdgeInsets.only(left: 29.0), // Adjust this value as needed
-          child: Image.asset(
-            'assets/icons/crate.png', // Image widget
-            height: 40,
-          ),
-        ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Container(
-              width: 32,
-              height: 32,
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                color: Color(0xFF242323),
-              ),
-              child: Center(
-                child: Text(
-                  'G2',
-                  style: TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold),
-                ),
-              ),
-            ),
-            SizedBox(width: 5),
-            Container(
-              height: 24,
-              width: 56,
-              child: TextField(
-                decoration: InputDecoration(
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(30.0),
+              Column(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(left: 29.0), // Adjust this value as needed
+                    child: Image.asset(
+                      'assets/icons/crate.png', // Image widget
+                      height: 30,
+                    ),
                   ),
-                  contentPadding: EdgeInsets.only(bottom: 10),
-                ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Container(
+                        width: 32,
+                        height: 32,
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          color: Color(0xFF242323),
+                        ),
+                        child: Center(
+                          child: Text(
+                            'G2',
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold),
+                          ),
+                        ),
+                      ),
+                      SizedBox(width: 5),
+                      Container(
+                        height: 24,
+                        width: 56,
+                        child: TextField(
+                          decoration: InputDecoration(
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(30.0),
+                            ),
+                            contentPadding: EdgeInsets.only(bottom: 10),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
               ),
-            ),
-          ],
-        ),
-      ],
-      ),
 
 
-      // MAIN -SCale-SIUUUUUUUUUUUU !!****************
+              // MAIN -SCale-SIUUUUUUUUUUUU !!****************
               Column(children: [
                 SvgPicture.asset(
-  'assets/icons/weight-scale.svg',
-  width: 70,
-  height:70,
+                  'assets/icons/weight-scale.svg',
+                  width: 70,
+                  height:50,
 
-),
-SizedBox(height: 10,),
+                ),
+                SizedBox(height: 10,),
 
                 Container(
                     height: 36,
@@ -129,7 +129,7 @@ SizedBox(height: 10,),
                       decoration: InputDecoration(
                         border: OutlineInputBorder(
                           borderRadius:
-                              BorderRadius.circular(30.0),
+                          BorderRadius.circular(30.0),
 
                         ),
                         contentPadding: EdgeInsets.only(bottom: 10),
@@ -142,63 +142,67 @@ SizedBox(height: 10,),
 
               // third one on the block
 
-      Column(
-        children: [
-          Padding(
-            padding: const EdgeInsets.only(left: 29.0), // Adjust this value as needed
-            child: Image.asset(
-              'assets/icons/crate.png', // Image widget
-              height: 40,
-            ),
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Container(
-                width: 32,
-                height: 32,
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  color: Color(0xFF242323),
-                ),
-                child: Center(
-                  child: Text(
-                    'G3',
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold),
-                  ),
-                ),
-              ),
-              SizedBox(width: 5),
-              Container(
-                height: 24,
-                width: 56,
-                child: TextField(
-                  decoration: InputDecoration(
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(30.0),
+              Column(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(right: 37.0), // Adjust this value as needed
+                    child: Image.asset(
+                      'assets/icons/crate.png', // Image widget
+                      height: 30,
                     ),
-                    contentPadding: EdgeInsets.only(bottom: 10),
                   ),
-                ),
-              ),
-            ],
-          ),
-        ],
-      ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      // Move the TextField to the start of the Row
+                      Container(
+                        height: 24,
+                        width: 56,
+                        child: TextField(
+                          decoration: InputDecoration(
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(30.0),
+                            ),
+                            contentPadding: EdgeInsets.only(bottom: 10),
+                          ),
+                        ),
+                      ),
+                      SizedBox(width: 5),
+                      // Now place the "G3" container here
+                      Container(
+                        width: 32,
+                        height: 32,
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          color: Color(0xFF242323),
+                        ),
+                        child: Center(
+                          child: Text(
+                            'G3',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
 
-      ],
+                ],
+              ),
+
+            ],
           ),
         ),
 
         //******************************* */
 
         // Fourth in the pit
-         Column(children: [
+        Column(children: [
           Image.asset(
             'assets/icons/crate.png',
-            height: 40,
+            height: 30,
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -225,13 +229,13 @@ SizedBox(height: 10,),
                     decoration: InputDecoration(
                       border: OutlineInputBorder(
                         borderRadius:
-                            BorderRadius.circular(30.0),
+                        BorderRadius.circular(30.0),
 
                       ),
                       contentPadding: EdgeInsets.only(bottom: 10),
                     ),
                   )),
-                  SizedBox(width:35),
+              SizedBox(width:35),
             ],
           ),
         ]),
@@ -277,7 +281,7 @@ class GradeItem extends StatelessWidget {
 
 
 
-            ),
+          ),
 
           SizedBox(width: 8.0),
           Expanded(

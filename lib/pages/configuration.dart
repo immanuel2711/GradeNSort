@@ -108,7 +108,12 @@ class _ConfigurationPageState extends State<ConfigurationPage> {
                         border: InputBorder.none,
                       ),
                       style: _blackTextStyle,
-                      onChanged: _updateLabel,
+                      onChanged: (text) {
+                        // Enable the button when there is text
+                        setState(() {
+                          _isButtonEnabled = text.isNotEmpty;
+                        });
+                      },
                     ),
                   ),
                 ),
@@ -125,12 +130,21 @@ class _ConfigurationPageState extends State<ConfigurationPage> {
                         ? () {
                       // Logic for the tick button
                       print('Commodity name: ${_commodityController.text}');
+                      if (_commodityController.text.isNotEmpty) {
+                        // You can handle the saving logic here
+
+                        // Keep the entered text in the field, but disable the button
+                        setState(() {
+                          _isButtonEnabled = false; // disable the button after saving
+                        });
+                      }
                     }
                         : null,
                   ),
                 ),
               ],
             ),
+
             const SizedBox(height: 16), // Gap between the text field and category section
 
             // No of categories section

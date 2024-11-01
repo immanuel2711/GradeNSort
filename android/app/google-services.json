@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "427139177269",
+    "project_id": "gradensort",
+    "storage_bucket": "gradensort.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:427139177269:android:fc7f8488d2d43e3fdd4a7c",
+        "android_client_info": {
+          "package_name": "com.example.scale"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDUhZml5TTe9zSZFs4XXgsr7vpH5_cIS7E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

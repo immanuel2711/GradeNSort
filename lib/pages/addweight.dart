@@ -1,4 +1,7 @@
+import 'dart:convert';
 import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
 import 'package:scale/nest/weighthub.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -13,6 +16,33 @@ class _AddWeightState extends State<AddWeight> {
   String? selectedCommodity;
   String? selectedVariety;
   bool isSwitched = false;
+  int index=0;
+  
+
+  List<dynamic> commodities = [];
+  
+
+  @override
+  void initState() {
+    super.initState();
+    fetchCommodities();
+  }
+
+  Future<void> fetchCommodities() async {
+    try {
+      final response = await http.get(Uri.parse('http://localhost:5000/api/commodities'));
+      if (response.statusCode == 200) {
+        setState(() {
+          commodities = json.decode(response.body);
+        });
+      } else {
+        throw Exception('Failed to load commodities');
+      }
+    } catch (e) {
+      print('Error: $e');
+    }
+  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -120,6 +150,7 @@ class _AddWeightState extends State<AddWeight> {
                 ),
               ),
               const SizedBox(height: 20),
+              
 
               
               Padding(
@@ -150,7 +181,12 @@ class _AddWeightState extends State<AddWeight> {
               Expanded(
                 child: ListView(
                   children: [
-                    GradeItem(grade: 'Grade 1', price: 80.00, quantity: 50),
+                    if (commodities.isNotEmpty) // Check if commodities is not empty
+        GradeItem(
+          grade: commodities[0]['grade'],
+          price: commodities[0]['price'].toDouble(),
+          quantity: commodities[0]['quantity'],
+        ),
                     GradeItem(grade: 'Grade 2', price: 95.00, quantity: 75),
                     GradeItem(grade: 'Grade 3', price: 68.00, quantity: 40),
                     GradeItem(grade: 'Grade 3', price: 68.00, quantity: 40),
@@ -208,3 +244,4 @@ class _AddWeightState extends State<AddWeight> {
     );
   }
 }
+

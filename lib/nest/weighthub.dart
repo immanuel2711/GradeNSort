@@ -1,234 +1,314 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-
-class WeighHub extends StatelessWidget {
+class WeighHub extends StatefulWidget {
   const WeighHub({Key? key}) : super(key: key);
+
+  @override
+  _WeighHubState createState() => _WeighHubState();
+}
+
+class _WeighHubState extends State<WeighHub> with TickerProviderStateMixin {
+  late AnimationController _controller;
+  late Animation<double> _animation;
+
+  late AnimationController _controllerG3;
+  late Animation<double> _animationG3;
+
+  @override
+  void initState() {
+    super.initState();
+    _controller = AnimationController(
+      duration: const Duration(milliseconds: 300),
+      vsync: this,
+    );
+    _animation = Tween<double>(begin: 1.0, end: 1.2).animate(
+      CurvedAnimation(parent: _controller, curve: Curves.easeInOut),
+    );
+
+     _controllerG3 = AnimationController(
+      duration: const Duration(milliseconds: 300),
+      vsync: this,
+    );
+    _animationG3 = Tween<double>(begin: 1.0, end: 1.2).animate(
+      CurvedAnimation(parent: _controllerG3, curve: Curves.easeInOut),
+    );
+  }
+
+  void _triggerAnimation() {
+    _controller.forward().then((_) {
+      _controller.reverse();
+    });
+  }
+  void _triggerAnimationG3() {
+    _controllerG3.forward().then((_) {
+      _controllerG3.reverse();
+    });
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    _controllerG3.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      
-
-      child: Column(children: [
-        //********************************* */  
-
-        // *** first one on the road ****
-        Column(children: [
-          Image.asset(
-            'assets/icons/crate.png',
-            height: 50,
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
+      child: Column(
+        children: [
+          // Top Crate
+          Column(
             children: [
-              Container(
-                  width: 32,
-                  height: 32,
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    color: Color(0xFF242323),
-                    
-                  ),
-                  child: Center(
-                    child: Text(
-                      'G1',
-                      style: TextStyle(
-                          color: Colors.white, fontWeight: FontWeight.bold),
-                    ),
-                  )),
-              SizedBox(width: 5),
-              Container(
-                  height: 24,
-                  width: 56,
-                  child: TextField(
-                    decoration: InputDecoration(
-                      border: OutlineInputBorder(
-                        borderRadius:
-                            BorderRadius.circular(30.0), 
-                        
-                      ),
-                      contentPadding: EdgeInsets.only(bottom: 10),
-                    ),
-                  )),
-                  SizedBox(width:35),
-            ],
-          ),
-        ]),
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 20),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              //**********************************88 */
-
-              // Second poppin
-
-              Column(children: [
-                Image.asset(
-                  'assets/icons/crate.png', //secongd thingy
-                  height: 50,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Container(
-                        width: 32,
-                        height: 32,
-                        decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          color: Color(0xFF242323),
-                        ),
-                        child: Center(
-                          child: Text(
-                            'G2',
-                            style: TextStyle(
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold),
-                          ),
-                        )),
-                    SizedBox(width: 5),
-                    Container(
-                        height: 24,
-                        width: 56,
-                        child: TextField(
-                          decoration: InputDecoration(
-                            border: OutlineInputBorder(
-                              borderRadius:
-                                  BorderRadius.circular(30.0), 
-                              
-                            ),
-                            contentPadding: EdgeInsets.only(bottom: 10),
-                          ),
-                        )),
-                    
-                  ],
-                ),
-              ]),
-
-              // MAIN -SCale-SIUUUUUUUUUUUU !!****************
-              Column(children: [
-                SvgPicture.asset(
-  'assets/icons/weight-scale.svg', 
-  width: 100,
-  height:90, 
-   
-),
-SizedBox(height: 10,),
-
-                Container(
-                    height: 36,
-                    width: 76,
-                    child: TextField(
-                      decoration: InputDecoration(
-                        border: OutlineInputBorder(
-                          borderRadius:
-                              BorderRadius.circular(30.0), 
-                          
-                        ),
-                        contentPadding: EdgeInsets.only(bottom: 10),
-                      ),
-                    )),
-                SizedBox(width:5),
-              ]),
-
-              //******************************* */
-
-              // third one on the block
-
-              Column(children: [
-                Image.asset(
+              ScaleTransition(
+                scale: _animation,
+                child: Image.asset(
                   'assets/icons/crate.png',
                   height: 50,
                 ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Container(
-                        width: 32,
-                        height: 32,
-                        decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          color: Color(0xFF242323),
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Container(
+                    width: 32,
+                    height: 32,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: Color(0xFF242323),
+                    ),
+                    child: Center(
+                      child: Text(
+                        'G1',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
                         ),
-                        child: Center(
-                          child: Text(
-                            'G3',
-                            style: TextStyle(
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold),
-                          ), 
-                        )),
-                    SizedBox(width: 5),
-                    Container(
-                        height: 24,
-                        width: 56,
-                        child: TextField(
-                          decoration: InputDecoration(
-                            border: OutlineInputBorder(
-                              borderRadius:
-                                  BorderRadius.circular(30.0), 
-                              
-                            ),
-                            contentPadding: EdgeInsets.only(bottom: 10),
+                      ),
+                    ),
+                  ),
+                  SizedBox(width: 5),
+                  Container(
+                    height: 24,
+                    width: 56,
+                    child: TextField(
+                      decoration: InputDecoration(
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(30.0),
+                        ),
+                        contentPadding: EdgeInsets.only(bottom: 10),
+                      ),
+                      onChanged: (value) {
+    if (value.isNotEmpty) {
+      _triggerAnimation();
+    }
+  },
+                    ),
+                  ),
+                  SizedBox(width: 35),
+                ],
+              ),
+            ],
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 20),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                // Left Crate
+                Column(
+                  children: [
+                    ScaleTransition(
+                      scale: _animation,
+                      child: Image.asset(
+                        'assets/icons/crate.png',
+                        height: 50,
+                      ),
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Container(
+                          width: 32,
+                          height: 32,
+                          decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            color: Color(0xFF242323),
                           ),
-                        )),
+                          child: Center(
+                            child: Text(
+                              'G2',
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ),
+                        ),
+                        SizedBox(width: 5),
+                        Container(
+                          height: 24,
+                          width: 56,
+                          child: TextField(
+                            decoration: InputDecoration(
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(30.0),
+                              ),
+                              contentPadding: EdgeInsets.only(bottom: 10),
+                            ),
+                            onChanged: (value) {
+    if (value.isNotEmpty) {
+      _triggerAnimation();
+    }
+  },
+                          ),
+                        ),
+                      ],
+                    ),
                   ],
                 ),
-              ]),
-            ],
-          ),
-        ),
 
-        //******************************* */
-
-        // Fourth in the pit
-         Column(children: [
-          Image.asset(
-            'assets/icons/crate.png',
-            height: 50,
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Container(
-                  width: 32,
-                  height: 32,
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    color: Color(0xFF242323),
-                  ),
-                  child: Center(
-                    child: Text(
-                      'G4',
-                      style: TextStyle(
-                          color: Colors.white, fontWeight: FontWeight.bold),
+                // Scale
+                Column(
+                  children: [
+                    SvgPicture.asset(
+                      'assets/icons/weight-scale.svg',
+                      width: 100,
+                      height: 90,
                     ),
-                  )),
-              SizedBox(width: 5),
-              Container(
-                  height: 24,
-                  width: 56,
-                  child: TextField(
-                    decoration: InputDecoration(
-                      border: OutlineInputBorder(
-                        borderRadius:
-                            BorderRadius.circular(30.0), 
-                        
+                    SizedBox(height: 10),
+                    Container(
+                      height: 36,
+                      width: 76,
+                      child: TextField(
+                        decoration: InputDecoration(
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(30.0),
+                          ),
+                          contentPadding: EdgeInsets.only(bottom: 10),
+                        ),
                       ),
-                      contentPadding: EdgeInsets.only(bottom: 10),
                     ),
-                  )),
-                  SizedBox(width:35),
+                    SizedBox(width: 5),
+                  ],
+                ),
+
+                // Right Crate
+                Column(
+                  children: [
+                    ScaleTransition(
+                      scale: _animation,
+                      child: Image.asset(
+                        'assets/icons/crate.png',
+                        height: 50,
+                      ),
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Container(
+                          width: 32,
+                          height: 32,
+                          decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            color: Color(0xFF242323),
+                          ),
+                          child: Center(
+                            child: Text(
+                              'G3',
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ),
+                        ),
+                        SizedBox(width: 5),
+                        Container(
+                          height: 24,
+                          width: 56,
+                          child: TextField(
+                            decoration: InputDecoration(
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(30.0),
+                              ),
+                              contentPadding: EdgeInsets.only(bottom: 10),
+                            ),
+                            onChanged: (value) {
+    if (value.isNotEmpty) {
+      _triggerAnimation();
+    }
+  },
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ),
+
+
+          // Bottom Crate
+          Column(
+            children: [
+              ScaleTransition(
+                scale: _animationG3,
+                child: Image.asset(
+                  'assets/icons/crate.png',
+                  height: 50,
+                ),
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Container(
+                    width: 32,
+                    height: 32,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: Color(0xFF242323),
+                    ),
+                    child: Center(
+                      child: Text(
+                        'G4',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                  ),
+                  SizedBox(width: 5),
+                  Container(
+                    height: 24,
+                    width: 56,
+                    child: TextField(
+                      decoration: InputDecoration(
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(30.0),
+                        ),
+                        contentPadding: EdgeInsets.only(bottom: 10),
+                      ),
+                      onChanged: (value) {
+    if (value.isNotEmpty) {
+      _triggerAnimationG3();
+    }
+  },
+                    ),
+                  ),
+                  SizedBox(width: 35),
+                ],
+              ),
             ],
           ),
-        ]),
-        /************************************* */
-      ]),
+        ],
+      ),
     );
   }
 }
-
 
 
 

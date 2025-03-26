@@ -1,4 +1,6 @@
+import 'dart:convert';
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
 import 'package:scale/pages/addweight.dart';
 import 'package:scale/nest/dummy.dart/dummy1.dart';
 
@@ -20,7 +22,8 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         fontFamily: 'Poppins',
       ),
-      home: AddWeight(),
+      home: AddWeight(),  
     );
   }
 }
+
